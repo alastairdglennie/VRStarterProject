@@ -55,7 +55,3 @@ Entities can be easily marked as _grabbable_, which lets them be picked up, drop
 When the trackpad is pressed, a `GrabRequestEvent` with the entity ID of the closest reachable object is emitted by [`GrabbingSender.cs`](workers/unity/Assets/Gamelogic/Grabbing/GrabbingSender.cs) on the client side. This event is handled by [`GrabbingReceiver.cs`](workers/unity/Assets/Gamelogic/Grabbing/GrabbingReceiver.cs) on the server side. It validates the grab attempt (that is, verifies that the hand and the object are actually colliding). If it is valid, it updates the `CurrentGrabberInfo` property of the `Grabbable` component to record which player and controller is grabbing it. When the trackpad is released, a very similar process handles dropping an object that is being held.
 
 While an object is being held, its position and orientation track those of the controller than is holding it. This is done in every client, to ensure there's no jitter between the position and orientation of the object and the controller. When an object is released, its velocity is set to match that of the controller; this way, objects can be thrown. All of this is implemented in [`GrabbableTransformHandler.cs`](workers/unity/Assets/Gamelogic/Grabbing/GrabbableTransformHandler.cs).
-
-### Player lifecycle management
-
-Player lifecycle management - the splash screen, logging in and out as a VR player or as a spectator - follows the guidelines in the [player lifecycle management]() tutorial.
